@@ -1,0 +1,29 @@
+<div style="margin: 0 auto;width: 400px;border: 2px solid blue;text-align: center;">
+  <h3 style="margin: 0; color: #0166A4">
+    Time until session expires:
+    <strong>{{(minutesLeft % 10 === minutesLeft)?'0' + minutesLeft:minutesLeft}}:{{(secondsLeft === 60)?'00':((secondsLeft % 10 === secondsLeft)?'0' + secondsLeft:secondsLeft)}}</strong>
+  </h3>
+  <div style="color: #0166A4;position: relative;">
+    <mat-icon (click)="resetTimer()" title="Expand your visit time" [ngStyle]="{cursor:'pointer'}">cached</mat-icon>
+  </div>
+  <hr>
+  <h3 style="margin: 0; color: #0166A4">
+    Idle Time:
+    <strong>{{(idleMinutesLeft % 10 === idleMinutesLeft)?'0' + idleMinutesLeft:idleMinutesLeft}}:{{(idleSecondsLeft === 60)?'00':((idleSecondsLeft % 10 === idleSecondsLeft)?'0' + idleSecondsLeft:idleSecondsLeft)}}</strong>
+  </h3>
+</div>
+
+
+<!-- IDLE TIME WARNING DIALOG -->
+<ng-template #idleTimeWarningDialogTemplate>
+  <h2 mat-dialog-title style="text-align: center;cursor: default">Idle time Warning</h2>
+  <mat-dialog-content class="mat-typography">
+    <h3 style="margin: 0; color: #0166A4">
+      Idle timer:
+      <strong>{{(idleMinutesLeft % 10 === idleMinutesLeft)?'0' + idleMinutesLeft:idleMinutesLeft}}:{{(idleSecondsLeft === 60)?'00':((idleSecondsLeft % 10 === idleSecondsLeft)?'0' + idleSecondsLeft:idleSecondsLeft)}}</strong>
+    </h3>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+  </mat-dialog-actions>
+</ng-template>
